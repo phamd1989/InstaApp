@@ -1,17 +1,30 @@
 package com.sample.duncapham.instaapp;
 
+import android.support.design.widget.TabLayout;
+import android.support.v4.app.FragmentActivity;
+import android.support.v4.view.ViewPager;
 import android.support.v7.app.ActionBarActivity;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
 
+import com.sample.duncapham.instaapp.adapters.InstaFragmentPagerAdapter;
 
-public class InstaFeedActivity extends ActionBarActivity {
+
+public class InstaFeedActivity extends FragmentActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_insta_feed);
+
+        // find the ViewPager and connect adapter
+        ViewPager viewPager = (ViewPager) findViewById(R.id.viewpager);
+        viewPager.setAdapter(new InstaFragmentPagerAdapter(getSupportFragmentManager(), InstaFeedActivity.this));
+
+        // Give the TabLayout to the ViewPager
+        TabLayout tabLayout = (TabLayout) findViewById(R.id.sliding_tabs);
+        tabLayout.setupWithViewPager(viewPager);
     }
 
     @Override
