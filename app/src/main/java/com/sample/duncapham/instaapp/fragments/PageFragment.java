@@ -29,7 +29,10 @@ public class PageFragment extends Fragment {
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        mPage = getArguments().getInt(ARG_PAGE);
+        Bundle args = getArguments();
+        if (args != null) {
+            mPage = getArguments().getInt(ARG_PAGE);
+        }
     }
 
     @Override

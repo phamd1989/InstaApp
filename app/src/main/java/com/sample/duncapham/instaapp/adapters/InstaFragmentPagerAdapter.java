@@ -5,6 +5,9 @@ import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentPagerAdapter;
 
+import com.sample.duncapham.instaapp.InstaFeedActivity;
+import com.sample.duncapham.instaapp.fragments.InstaFavFragment;
+import com.sample.duncapham.instaapp.fragments.InstaFeedFragment;
 import com.sample.duncapham.instaapp.fragments.PageFragment;
 
 /**
@@ -22,7 +25,14 @@ public class InstaFragmentPagerAdapter extends FragmentPagerAdapter {
 
     @Override
     public Fragment getItem(int position) {
-        return PageFragment.newInstance(position+1);
+        switch (position) {
+            case 0: // Fragment # 0 - This will show FirstFragment
+                return InstaFeedFragment.newInstance();
+            case 1: // Fragment # 0 - This will show FirstFragment different title
+                return InstaFavFragment.newInstance(2);
+            default:
+                return PageFragment.newInstance(position+1);
+        }
     }
 
     @Override
